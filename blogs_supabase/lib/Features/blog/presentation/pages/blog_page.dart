@@ -1,6 +1,8 @@
 import 'package:blogs_supabase/Features/blog/presentation/bloc/blog_bloc.dart';
+import 'package:blogs_supabase/Features/blog/presentation/widgets/blog_card.dart';
 import 'package:blogs_supabase/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:blogs_supabase/core/common/widgets/loader.dart';
+import 'package:blogs_supabase/core/theme/app_palette.dart';
 import 'package:blogs_supabase/core/utils/show_snackbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -54,7 +56,11 @@ class _BlogPageState extends State<BlogPage> {
             return ListView.builder(
                 itemCount: state.blogs.length,
                 itemBuilder: (context, index) {
-                  return Text(state.blogs[index].title);
+                  return BlogCard(
+                    blog: state.blogs[index],
+                    color: AppPallete
+                        .cardColors[index % AppPallete.cardColors.length],
+                  );
                 });
           }
           return const SizedBox();

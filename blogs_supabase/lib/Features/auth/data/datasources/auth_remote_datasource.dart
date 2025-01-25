@@ -40,19 +40,14 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       required String email,
       required String password}) async {
     try {
-      print("name: $name, email: $email, password: $password");
       final response = await supabaseClient.auth
           .signUp(password: password, email: email, data: {"name": name});
-      print("response: ${response.user!.id}");
       if (response.user == null) {
-        print("user is null");
         throw const ServerException("User is null");
       }
-      print("user: ${response.user!.toJson()}");
       return UserModel.fromJson(response.user!.toJson())
           .copyWith(email: currentUserSession!.user.email);
     } catch (e) {
-      print(e);
       throw ServerException(e.toString());
     }
   }

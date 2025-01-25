@@ -1,5 +1,6 @@
 import 'package:blogs_supabase/Features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blogs_supabase/Features/auth/presentation/pages/register.dart';
+import 'package:blogs_supabase/Features/blog/presentation/pages/blog_page.dart';
 import 'package:blogs_supabase/core/common/widgets/loader.dart';
 import 'package:blogs_supabase/core/theme/app_palette.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,12 @@ class _LoginPageState extends State<LoginPage> {
             if (state is AuthFailure) {
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(state.message)));
-            } else if (state is AuthSuccess) {}
+            } else if (state is AuthSuccess) {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => BlogPage()),
+                  (route) => false);
+            }
           },
           builder: (context, state) {
             if (state is AuthLoading) {

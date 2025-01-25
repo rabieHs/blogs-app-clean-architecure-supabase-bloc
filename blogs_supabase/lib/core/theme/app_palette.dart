@@ -10,4 +10,6 @@ class AppPallete {
   static const Color greyColor = Colors.grey;
   static const Color errorColor = Colors.redAccent;
   static const Color transparentColor = Colors.transparent;
+
+  static List<Color> cardColors = [gradient1, gradient2, gradient3];
 }

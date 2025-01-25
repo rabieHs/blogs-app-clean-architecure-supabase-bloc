@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/common/widgets/loader.dart';
+import '../../../blog/presentation/pages/blog_page.dart';
 import '../widgets/auth_widgets.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -42,6 +43,11 @@ class _SignUpPageState extends State<SignUpPage> {
           listener: (context, state) {
             if (state is AuthFailure) {
               showSnackBar(context, state.message);
+            } else if (state is AuthSuccess) {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => BlogPage()),
+                  (route) => false);
             }
           },
           builder: (context, state) {

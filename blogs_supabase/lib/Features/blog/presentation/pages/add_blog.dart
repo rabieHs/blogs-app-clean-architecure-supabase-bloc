@@ -5,6 +5,7 @@ import 'package:blogs_supabase/Features/blog/presentation/pages/blog_page.dart';
 import 'package:blogs_supabase/Features/blog/presentation/widgets/blog_editor.dart';
 import 'package:blogs_supabase/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:blogs_supabase/core/common/widgets/loader.dart';
+import 'package:blogs_supabase/core/constants/constants.dart';
 import 'package:blogs_supabase/core/theme/app_palette.dart';
 import 'package:blogs_supabase/core/utils/pick_image.dart';
 import 'package:blogs_supabase/core/utils/show_snackbar.dart';
@@ -141,12 +142,7 @@ class _AddBlogPageState extends State<AddBlogPage> {
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                        children: [
-                          'Technology',
-                          'Science',
-                          'Health',
-                          'Business'
-                        ]
+                        children: Constants.topics
                             .map((e) => Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: GestureDetector(

@@ -48,9 +48,9 @@ class _MyAppState extends State<MyApp> {
         },
         builder: (context, state) {
           if (state) {
-            return BlogPage();
+            return const BlogPage();
           }
-          return LoginPage();
+          return const LoginPage();
         },
       ),
     );

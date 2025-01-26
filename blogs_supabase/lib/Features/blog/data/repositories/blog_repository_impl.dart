@@ -63,4 +63,23 @@ class BlogRepositoryImpl implements BlogRepository {
       return left(Failure(e.message));
     }
   }
+
+  /// This is the same function as above but implemented using Streams and follow the caching first - network second approach
+
+  // Stream<Either<Failure, List<Blog>>> getAllBlogs() async* {
+  //   try {
+  //     final localBlogs = blogLocalDatasource.getCachedBlogs();
+  //     yield right(localBlogs);
+
+  //     if (await connectionChecker.isConnected) {
+  //       final blogs = await blogRemoteDatasource.getAllBlogs();
+  //       blogLocalDatasource.cacheBlogs(blogs: blogs);
+  //       print("fetched remote blogs and update  them");
+
+  //       yield right(blogs);
+  //     }
+  //   } on ServerException catch (e) {
+  //     yield left(Failure(e.message));
+  //   }
+  // }
 }
